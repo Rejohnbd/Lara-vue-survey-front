@@ -4,6 +4,7 @@ import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Dashboard from "../views/Dashboard.vue";
 import DefaultLayout from "../components/DefaultLayout.vue";
+import AuthLayout from "../components/AuthLayout.vue";
 import Surveys from "../views/Surveys.vue";
 
 const routes = [
@@ -17,14 +18,22 @@ const routes = [
     ],
   },
   {
-    path: "/login",
-    name: "Login",
-    component: Login,
-  },
-  {
-    path: "/register",
-    name: "Register",
-    component: Register,
+    path: "/auth",
+    redirect: "/login",
+    name: "Auth",
+    component: AuthLayout,
+    children: [
+      {
+        path: "/login",
+        name: "Login",
+        component: Login,
+      },
+      {
+        path: "/register",
+        name: "Register",
+        component: Register,
+      },
+    ],
   },
 ];
 

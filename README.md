@@ -33,3 +33,15 @@ npm run build
 ```sh
 npm install vuex@next --save
 ```
+
+```sh
+npm install -D tailwindcss postcss autoprefixer
+```
+
+```sh
+npx tailwindcss init
+```
+
+```sh
+npm install @headlessui/vue @heroicons/vue @tailwindcss/forms --save
+```

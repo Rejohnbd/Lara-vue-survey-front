@@ -45,3 +45,7 @@ npx tailwindcss init
 ```sh
 npm install @headlessui/vue @heroicons/vue @tailwindcss/forms --save
 ```
+
+```sh
+npm install vue-router@4
+```

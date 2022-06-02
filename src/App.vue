@@ -1,9 +1,21 @@
-<script setup>
+<script>
+import { mapState } from 'vuex';
+
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
+
+export default {
+  components: {
+    HelloWorld
+  },
+  computed: {
+    ...mapState(['user'])
+  }
+}
 </script>
 
 <template>
+  <pre>{{user}}</pre>
   <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 

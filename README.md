@@ -27,3 +27,9 @@ npm run dev
 ```sh
 npm run build
 ```
+
+### Rejohn Added
+
+```sh
+npm install vuex@next --save
+```

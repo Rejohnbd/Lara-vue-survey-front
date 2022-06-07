@@ -11,6 +11,15 @@
     </p>
   </div>
   <form class="mt-8 space-y-6" @submit="login">
+    <div v-if="errorMsg" class="flex items-center justify-between py-3 px-5 bg-red-500 text-white rounded">
+      {{ errorMsg }}
+      <span @click="errorMsg = ''" class="w-8 h-8 flex items-center justify-center rounded-full transition-colors cursor-pointer hover:bg-[rgba(0,0,0,0.2)]">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </span>
+    </div>
     <input type="hidden" name="remember" value="true" />
     <div class="rounded-md shadow-sm -space-y-px">
       <div>
@@ -21,7 +30,8 @@
       </div>
       <div>
         <label for="password" class="sr-only">Password</label>
-        <input id="password" name="password" type="password" autocomplete="current-password" required="" v-model="user.password"
+        <input id="password" name="password" type="password" autocomplete="current-password" required=""
+          v-model="user.password"
           class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
           placeholder="Password" />
       </div>
@@ -50,6 +60,7 @@
 <script setup>
 import store from '../store';
 import { useRouter } from 'vue-router';
+import { ref } from "vue";
 
 import { LockClosedIcon } from '@heroicons/vue/solid';
 
@@ -61,6 +72,8 @@ const user = {
   remember: false
 }
 
+let errorMsg = ref('');
+
 function login(e) {
   e.preventDefault();
 
@@ -69,6 +82,9 @@ function login(e) {
       router.push({
         name: 'Dashboard'
       });
+    })
+    .catch(err => {
+      errorMsg.value = err.response.data.error
     });
 }
 </script>

@@ -53,3 +53,7 @@ npm install vue-router@4
 ```sh
 npm i axios
 ```
+
+```sh
+npm i -S uuid
+```

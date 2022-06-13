@@ -13,7 +13,7 @@ const tmpSurveys = [
     created_at: "2021-12-20 18:00:00",
     updated_at: "2021-12-20 18:00:00",
     expire_at: "2021-12-20 18:00:00",
-    question: [
+    questions: [
       {
         id: 1,
         type: "select",
@@ -171,7 +171,7 @@ const tmpSurveys = [
     created_at: "2021-12-20 18:00:00",
     updated_at: "2021-12-20 18:00:00",
     expire_at: "2021-12-20 18:00:00",
-    question: [
+    questions: [
       {
         id: 1,
         type: "select",
@@ -329,7 +329,7 @@ const tmpSurveys = [
     created_at: "2021-12-20 18:00:00",
     updated_at: "2021-12-20 18:00:00",
     expire_at: "2021-12-20 18:00:00",
-    question: [
+    questions: [
       {
         id: 1,
         type: "select",
@@ -487,7 +487,7 @@ const tmpSurveys = [
     created_at: "2021-12-20 18:00:00",
     updated_at: "2021-12-20 18:00:00",
     expire_at: "2021-12-20 18:00:00",
-    question: [
+    questions: [
       {
         id: 1,
         type: "select",
@@ -643,6 +643,7 @@ const store = createStore({
       token: sessionStorage.getItem("TOKEN"),
     },
     surveys: [...tmpSurveys],
+    questionTypes: ["text", "select", "radio", "checkbox", "textarea"],
   },
   getters: {},
   actions: {

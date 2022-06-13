@@ -7,7 +7,7 @@
                 </h1>
             </div>
         </template>
-        <pre>{{model}}</pre>
+
         <form @submit.prevent="saveSurvey">
             <div class="shadow sm:rounded-md sm:overflow-hidden">
                 <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
@@ -64,6 +64,35 @@
                             <label for="status" class="font-medium text-gray-700">Active</label>
                         </div>
                     </div>
+
+                    <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+                        <h3 class="text-2xl font-semibold flex items-center justify-between">
+                            Questions
+                            <button type="button" @click="addQuestion()"
+                                class="flex items-center text-sm py-1 px-4 rounded-sm text-white bg-gray-600 hover:bg-gray-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                Add Question
+                            </button>
+                        </h3>
+                        <div v-if="!model.questions.length" class="text-center text-gray-600">
+                            You don't have any questions created
+                        </div>
+                        <div v-for="(question, index) in model.questions" :key="question.id">
+                            <QuestionEditor 
+                                :question="question" 
+                                :index="index" 
+                                @change="questionChange"
+                                @addQuestion="addQuestion" 
+                                @deleteQuestion="deleteQuestion" 
+                            />
+                        </div>
+                    </div>
+
                     <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                         <button type="submit"
                             class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
@@ -82,6 +111,7 @@ import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 
 import PageComponent from '../components/PageComponent.vue';
+import QuestionEditor from '../components/QuestionEditor.vue';
 
 const route = useRoute();
 
